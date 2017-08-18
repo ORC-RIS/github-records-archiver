@@ -38,6 +38,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   dotenv
@@ -48,4 +49,4 @@ DEPENDENCIES
   ruby-progressbar
 
 BUNDLED WITH
-   1.11.2
+   1.15.3

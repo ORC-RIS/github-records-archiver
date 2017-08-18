@@ -3,6 +3,7 @@
 # all their associated information for archival purposes.
 # Usage: ruby archive.rb
 
+require 'rubygems'
 require './lib/github_records_archiver'
 require 'parallel'
 
@@ -33,8 +34,9 @@ log "Found #{org.repos.count} repos"
 Parallel.each(org.repos, progress: 'Archiving repos') do |repo|
   begin
     repo.clone
-    repo.wiki.clone unless repo.wiki.nil?
-    Parallel.each(repo.issues, &:archive)
+    #puts repo.wiki.has_pages
+    #repo.wiki.clone unless repo.wiki.nil or !repo.wiki.has_pages?
+    #Parallel.each(repo.issues, &:archive)
   rescue GitHubRecordsArchiver::GitError => e
     error "Failed to archive #{repo.name}"
     error e.message
